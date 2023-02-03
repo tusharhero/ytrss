@@ -15,7 +15,7 @@ def makeDescription(link="", authors="unknown", description="description unavail
     return Desc
 
 
-def createfeed(feed,format=251):
+def createfeed(feed, format=251):
     fd = FeedGenerator()
     fd.logo(feed["avatarUrl"])
     fd.title(feed["name"])
@@ -36,7 +36,7 @@ def createfeed(feed,format=251):
             str(item["duration"]),
             "audio/m4a",
         )  # get direct audio link
-    return fd,feed["name"]
+    return fd, feed["name"]
 
 
 def savefeed(feed):
