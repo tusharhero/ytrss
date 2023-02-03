@@ -6,7 +6,6 @@ name: Yt random gen and update website
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
   schedule:
     - cron: "0 0 * * *"
 
