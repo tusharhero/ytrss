@@ -4,11 +4,11 @@ name: Yt random gen and update website
 
 # Controls when the action will run. Triggers the workflow on push events
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   schedule:
     - cron: "0 0 * * *"
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in
 # parallel
