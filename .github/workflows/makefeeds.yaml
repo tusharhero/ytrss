@@ -48,6 +48,7 @@ jobs:
     # Generate all statistics images
     - name: Generate link
       run: |
+        git checkout publicfeeds
         python3 --version
         python3 orc.py
         rm -rf ./feed
