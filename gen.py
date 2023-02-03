@@ -15,7 +15,7 @@ def makeDescription(link="", authors="unknown", description="description unavail
     return Desc
 
 
-def createfeed(feed):
+def createfeed(feed,format=251):
     fd = FeedGenerator()
     fd.logo(feed["avatarUrl"])
     fd.title(feed["name"])
@@ -32,7 +32,7 @@ def createfeed(feed):
             )
         )
         fe.enclosure(
-            f"https://invidious.kavin.rocks/latest_version?id={vidid}&itag=140&listen=1",
+            f"https://invidious.kavin.rocks/latest_version?id={vidid}&itag={str(format)}&listen=1",
             str(item["duration"]),
             "audio/m4a",
         )  # get direct audio link

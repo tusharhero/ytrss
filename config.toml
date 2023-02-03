@@ -1,3 +1,10 @@
+#	video
+#1080p = 699
+#360p = 696
+#
+#	audio
+#WebM(Opus) 160Kbps = 251
+
 [servers]
 piped=[]
 invidious=[]
@@ -6,9 +13,9 @@ invidious=[]
 [[channels]]
 #BeerBiceps
 channelid='UCPxMZIFE856tbTfdkdjzTSQ'
-format='audio'
+format='251'
 
 [[channels]]
 #Vsauce
 channelid='UC6nSFpj9HTCZ5t-N3Rm3-HA'
-format='video'
+format='696'
