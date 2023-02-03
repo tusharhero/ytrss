@@ -1,0 +1,51 @@
+name: ytrss public instance
+run-name: ${{ github.actor }} is running ytrss
+on:
+  schedule:
+  - cron: "0 0 */3 * *"
+jobs:
+  generatefeeds:
+  runs-on: ubuntu-latest
+  steps:
+  # Checks-out repository under $GITHUB_WORKSPACE, so the job can access it
+  - uses: actions/checkout@v2
+
+  # Run using Python 3.8 for consistency and aiohttp
+  - name: Set up Python 3.8
+    uses: actions/setup-python@v2
+    with:
+      python-version: '3.8'
+      architecture: 'x64'
+    # Cache dependencies. From:
+    # https://github.com/actions/cache/blob/master/examples.md#python---pip
+  - uses: actions/cache@v2
+    with:
+      path: ~/.cache/pip
+      key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      restore-keys: |
+        ${{ runner.os }}-pip-
+  # Install dependencies with `pip`
+  - name: Install requirements
+    run: |
+      python3 -m pip install -r requirements.txt
+  - name: update feeds
+    run: |
+      python3 --version
+      python3 orc.py
+      mv *.rss ./feed/
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      EXCLUDED: ${{ secrets.EXCLUDED }}
+      EXCLUDED_LANGS: ${{ secrets.EXCLUDED_LANGS }}
+      EXCLUDE_FORKED_REPOS: true
+
+    # Commits all changed files to the repository
+    - name: Commit to the repo
+      run: |
+        git config --global user.name "randomytbot"
+        git config --global user.email "randomyt[bot]@tusharhero.github.io"
+        git add ./feed/*
+        # "echo" returns true so the build succeeds, even if no changed files
+        git commit -am 'update feeds' || echo
+        git push
