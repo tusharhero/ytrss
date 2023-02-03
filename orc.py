@@ -14,3 +14,5 @@ def main():
         videodata = get.getvideodata(channel["channelid"])
         feed = gen.createfeed(videodata)
         gen.savefeed(feed)
+
+main()
