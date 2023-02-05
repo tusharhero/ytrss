@@ -50,8 +50,7 @@ jobs:
         git checkout publicfeeds
         python3 --version
         python3 orc.py
-        rm -rf ./feed
-        mkdir feed
+        rm ./feed/*.rss
         mv *.rss ./feed/
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
