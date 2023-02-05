@@ -14,7 +14,7 @@
         let htmlString = '<ul>';
 
         for (let file of data) {
-		if ((file.name != 'index.html') && (filename != 'style.css')){
+		if ((file.name != 'index.html') && (file.name != 'style.css')){
           htmlString += `<li><a href="https://tusharhero.github.io/ytrss/feed/${file.name}">${file.name}</a></li>`;
 		}
 	}
