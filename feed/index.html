@@ -14,8 +14,10 @@
         let htmlString = '<ul>';
 
         for (let file of data) {
-          htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
-        }
+		if (file.name != 'index.html' or filename != 'style.css'){
+          htmlString += `<li><a href="https://tusharhero.github.io/ytrss/feed/${file.name}">${file.name}</a></li>`;
+		}
+	}
 
         htmlString += '</ul>';
         document.getElementsByTagName('div')[0].innerHTML = htmlString;
