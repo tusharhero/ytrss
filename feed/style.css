@@ -1,0 +1,23 @@
+ody{
+	background-color: black;
+	color: white;
+	font-family: monospace;
+	margin: 3em;
+}
+h1{
+	background-color: #163316;
+	padding: 0.5em;
+	text-align: center;
+	width: min(20em, 50vw);
+}
+div{
+	padding: 0.5em;
+	background-color: #161e1e;
+	width: min(25em, 50vw);
+}
+a{
+	color: white;
+}
+a:hover{
+	color: lightcyan;
+}
