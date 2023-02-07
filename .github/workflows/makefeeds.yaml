@@ -4,10 +4,9 @@ name: Yt random gen and update website
 
 # Controls when the action will run. Triggers the workflow on push events
 on:
-  workflow_dispatch:
-  push:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in
 # parallel
@@ -47,6 +46,7 @@ jobs:
     # Generate all statistics images
     - name: Generate link
       run: |
+        git pull
         git checkout publicfeeds
         python3 --version
         python3 orc.py
@@ -66,5 +66,6 @@ jobs:
         git add .
         # "echo" returns true so the build succeeds, even if no changed files
         git commit -m 'Update the feeds' || echo
+        git pull
         git push
 
